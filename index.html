@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benteng Kuto Besak - Historical Fortress</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo" style="color: #2c3e50;">Benteng Kuto Besak</div>
+        <nav>
+            <div class="burger-menu" id="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="nav-menu">
+                <li><a href="#history">History</a></li>
+                <li><a href="#tour">Virtual Tour</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="text-panel">
+                <h1>Discover Benteng Kuto Besak</h1>
+                <p>Explore the rich history of Benteng Kuto Besak, a UNESCO-recognized fortress symbolizing Palembang's heritage and resilience against colonial forces.</p>
+                <form>
+                    <input type="email" placeholder="Enter your email for updates">
+                    <button type="submit">Subscribe</button>
+                </form>
+                <p>Join our community of history enthusiasts.</p>
+            </div>
+            <div class="image-panel">
+                <img src="img/M1.jpg" alt="Benteng Kuto Besak">
+                <div class="overlay">Historical Site</div>
+                <div class="bubble">
+                    <img src="https://via.placeholder.com/50x50?text=Visitor" alt="Visitor">
+                </div>
+            </div>
+        </section>
+
+        <section id="history" class="vision">
+            <h2>History of Benteng Kuto Besak</h2>
+            <p>Benteng Kuto Besak, meaning "Square Fortress," was built in the 18th century during the Palembang Sultanate era. Constructed to defend against Dutch colonial invasions, this fortress showcases a unique blend of Malay and European architectural influences. Its thick walls, bastions, and central courtyard stand as a testament to Palembang's resistance and cultural heritage.</p>
+            <div class="buttons">
+                <button>Learn More</button>
+                <button>View Timeline</button>
+            </div>
+            <div class="circles">
+                <div class="circle">Origin</div>
+                <div class="circle">Architecture</div>
+                <div class="circle">Significance</div>
+            </div>
+        </section>
+
+        <section id="map" class="initiatives">
+            <h2>Interactive Map</h2>
+            <p class="description">Click on different parts of the fortress to explore photos and detailed descriptions.</p>
+            <div class="map-grid">
+                <div class="map-item">
+                    <img src="https://via.placeholder.com/300x200?text=Main+Gate" alt="Main Gate">
+                    <h3>Main Gate</h3>
+                    <p>The main entrance to the fortress, featuring historical architecture and welcoming visitors.</p>
+                    <button>Explore</button>
+                </div>
+                <div class="map-item">
+                    <img src="https://via.placeholder.com/300x200?text=Courtyard" alt="Courtyard">
+                    <h3>Courtyard</h3>
+                    <p>The central area of the fortress, a hub for activities and gatherings.</p>
+                    <button>Explore</button>
+                </div>
+                <div class="map-item">
+                    <img src="https://via.placeholder.com/300x200?text=Bastions" alt="Bastions">
+                    <h3>Bastions</h3>
+                    <p>Defensive towers that provided protection and strategic viewpoints.</p>
+                    <button>Explore</button>
+                </div>
+                <div class="map-item">
+                    <img src="https://via.placeholder.com/300x200?text=Walls" alt="Walls">
+                    <h3>Walls</h3>
+                    <p>Thick fortifications that tell the story of the fortress's defensive history.</p>
+                    <button>Explore</button>
+                </div>
+            </div>
+        </section>
+
+    <section id="tour-list" class="tour-list">
+  <div class="tour-header">
+    <h2>Virtual Tour Guide</h2>
+    <p>Discover immersive experiences and narrated tours of Benteng Kuto Besak</p>
+  </div>
+
+  <div class="tour-table">
+    <div class="tour-row tour-heading">
+      <div class="title">Title</div>
+      <div class="tags">Tags</div>
+      <div class="date">Access</div>
+    </div>
+
+    <div class="tour-row" data-image="img" data-pos="top-right">
+      <div class="title">360° Exploration</div>
+      <div class="tags"><span>Virtual tour</span><span>Full view</span></div>
+      <div class="date"><a href="https://indonesiavirtualtour.com/storage/destination/benteng-kuto-besak/src/index.htm" target="_blank">Start</a></div>
+    </div>
+
+    <div class="tour-row" data-image="https://images.unsplash.com/photo-1549899595-ecaa76b8ad1b?auto=format&fit=crop&w=600&q=60" data-pos="bottom-left">
+      <div class="title">English Narration</div>
+      <div class="tags"><span>Audio guide</span><span>English</span></div>
+      <div class="date"><button>Play</button></div>
+    </div>
+
+    <div class="tour-row" data-image="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=600&q=60" data-pos="bottom-right">
+      <div class="title">Indonesian Narration</div>
+      <div class="tags"><span>Audio guide</span><span>Bahasa</span></div>
+      <div class="date"><button>Play</button></div>
+    </div>
+
+    <div class="tour-row" data-image="https://images.unsplash.com/photo-1602526219334-df7b5b2a3391?auto=format&fit=crop&w=600&q=60" data-pos="top-left">
+      <div class="title">Interactive Features</div>
+      <div class="tags"><span>Hotspot info</span><span>Explore</span></div>
+      <div class="date"><button>Explore</button></div>
+    </div>
+  </div>
+</section>
+
+<style>
+.tour-list {
+  font-family: 'Poppins', sans-serif;
+  padding: 60px 5%;
+  background: #fff;
+}
+
+.tour-header h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.tour-header p {
+  color: #666;
+  margin-top: 8px;
+}
+
+.tour-table {
+  margin-top: 40px;
+  border-top: 1px solid #ddd;
+}
+
+.tour-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  align-items: center;
+  padding: 22px 0;
+  border-bottom: 1px solid #eee;
+  transition: background 0.3s;
+}
+
+.tour-row:hover {
+  background: #fafafa;
+}
+
+.tour-heading {
+  font-weight: 600;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.tour-row .title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #111;
+}
+
+.tour-row .tags span {
+  display: inline-block;
+  background: #f1f1f1;
+  color: #333;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  margin-right: 8px;
+}
+
+.tour-row .date {
+  text-align: right;
+}
+
+.tour-row a,
+.tour-row button {
+  background: #0077ff;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.tour-row a:hover,
+.tour-row button:hover {
+  background: #005fd1;
+}
+
+/* Gambar preview dalam baris */
+.tour-row .preview-img {
+  position: absolute;
+  width: 180px;
+  height: 110px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fffd94;
+  display: none;
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 2;
+}
+
+.tour-row .preview-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transform: rotate(-2deg);
+}
+
+/* Posisi-posisi berbeda */
+.tour-row[data-pos="top-right"] .preview-img { top: -40px; right: 90px; transform: rotate(2deg); }
+.tour-row[data-pos="top-left"] .preview-img { top: -40px; left: 160px; transform: rotate(-2deg); }
+.tour-row[data-pos="bottom-right"] .preview-img { bottom: -40px; right: 90px; transform: rotate(-3deg); }
+.tour-row[data-pos="bottom-left"] .preview-img { bottom: -40px; left: 160px; transform: rotate(3deg); }
+</style>
+
+<script>
+document.querySelectorAll(".tour-row:not(.tour-heading)").forEach(row => {
+  const imgUrl = row.getAttribute("data-image");
+  const preview = document.createElement("div");
+  preview.className = "preview-img";
+  preview.innerHTML = `<img src="${imgUrl}" alt="">`;
+  row.appendChild(preview);
+
+  row.addEventListener("mouseenter", () => {
+    preview.style.display = "block";
+    preview.style.opacity = "1";
+  });
+
+  row.addEventListener("mouseleave", () => {
+    preview.style.opacity = "0";
+    setTimeout(() => (preview.style.display = "none"), 200);
+  });
+});
+</script>
+
+
+        <section id="booking" class="vision">
+            <h2>Book Your Tour</h2>
+            <p>Experience Benteng Kuto Besak and its surroundings with a professional guide. We offer various tour packages including visits to Museum Sultan Mahmud Badaruddin II and exciting boat tours.</p>
+            <div class="buttons">
+                <button onclick="window.location.href='booking.html'">Book Now</button>
+                <button onclick="window.location.href='booking.html'">View Tour Options</button>
+            </div>
+            <div class="circles">
+                <div class="circle">Historical Walks</div>
+                <div class="circle">Virtual Experience</div>
+                <div class="circle">Group Packages</div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="head">
+                <h2>Gallery</h2>
+
+                <div class="controls">
+                    <button id="prev" class="nav-btn" aria-label="Prev">‹</button>
+                    <button id="next" class="nav-btn" aria-label="Next">›</button>
+                </div>
+            </div>
+
+            <div class="slider">
+                <div class="track" id="track">
+
+                    <article class="project-card" active>
+                        <img class="project-card__bg" src="img/M2.jpg" alt="">
+                        <div class="project-card__content">
+                            <img class="project-card__thumb" src="https://via.placeholder.com/133x269?text=Fortress+Views" alt="">
+                            <div>
+                                <h3 class="project-card__title">Fortress Views</h3>
+                                <p class="project-card__desc">Stunning aerial and ground views of the historic fortress.</p>
+                                <button class="project-card__btn">View More</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <img class="project-card__bg" src="img/M3.jpg" alt="">
+                        <div class="project-card__content">
+                            <img class="project-card__thumb" src="https://via.placeholder.com/133x269?text=Visitor+Moments" alt="">
+                            <div>
+                                <h3 class="project-card__title">Visitor Moments</h3>
+                                <p class="project-card__desc">Capturing the joy and wonder of visitors exploring the site.</p>
+                                <button class="project-card__btn">View More</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <img class="project-card__bg" src="img/M4.jpg" alt="">
+                        <div class="project-card__content">
+                            <img class="project-card__thumb" src="https://via.placeholder.com/133x269?text=Historical+Artifacts" alt="">
+                            <div>
+                                <h3 class="project-card__title">Historical Artifacts</h3>
+                                <p class="project-card__desc">Rare artifacts and relics from the fortress's colonial past.</p>
+                                <button class="project-card__btn">View More</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <img class="project-card__bg" src="img/M5.jpg" alt="">
+                        <div class="project-card__content">
+                            <img class="project-card__thumb" src="https://via.placeholder.com/133x269?text=Restoration+Work" alt="">
+                            <div>
+                                <h3 class="project-card__title">Restoration Work</h3>
+                                <p class="project-card__desc">Ongoing preservation efforts to maintain the fortress's integrity.</p>
+                                <button class="project-card__btn">View More</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <img class="project-card__bg" src="img/M6.jpg" alt="">
+                        <div class="project-card__content">
+                            <img class="project-card__thumb" src="https://via.placeholder.com/133x269?text=Courtyard+Scenes" alt="">
+                            <div>
+                                <h3 class="project-card__title">Courtyard Scenes</h3>
+                                <p class="project-card__desc">The heart of the fortress, showcasing its architectural beauty.</p>
+                                <button class="project-card__btn">View More</button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+            <div class="dots" id="dots"></div>
+        </section>
+
+        <section id="stories" class="problems">
+            <h2>Visitor Stories</h2>
+            <div class="grid">
+                <div class="problem-card">
+                    <h3>John D., USA</h3>
+                    <p>"An amazing journey through history! The fortress is beautifully preserved and the guides were incredibly knowledgeable."</p>
+                    <button>Read More</button>
+                </div>
+                <div class="problem-card">
+                    <h3>Maria S., Spain</h3>
+                    <p>"The virtual tour was incredible. I felt like I was transported back in time. Highly recommend!"</p>
+                    <button>Read More</button>
+                </div>
+                <div class="problem-card">
+                    <h3>Ahmad R., Indonesia</h3>
+                    <p>"As a local, I'm proud of our heritage. The interactive map and stories from visitors make it even more special."</p>
+                    <button>Read More</button>
+                </div>
+                <div class="problem-card">
+                    <h3>Sarah L., Australia</h3>
+                    <p>"The tour guide was fantastic - spoke perfect English and shared fascinating details about the colonial history."</p>
+                    <button>Read More</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="vision">
+            <h2>Contact Us</h2>
+            <p>For more information about visiting Benteng Kuto Besak, contact the local tourism office. Get practical visitor information and plan your trip.</p>
+            <div class="buttons">
+                <button>Get Directions</button>
+                <button>Contact Office</button>
+            </div>
+            <div class="circles">
+                <div class="circle">Location</div>
+                <div class="circle">Hours</div>
+                <div class="circle">Info</div>
+            </div>
+        </section>
+
+        
+    </main>
+
+    <footer>
+        <div class="newsletter">
+            <h3>Subscribe to our newsletter</h3>
+            <p>Get the latest updates on Benteng Kuto Besak events, restoration projects, and visitor information.</p>
+            <form>
+                <input type="email" placeholder="Enter your email">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+        <div class="social">
+            <div class="icon">F</div>
+            <div class="icon">T</div>
+            <div class="icon">I</div>
+        </div>
+        <p>&copy; 2023 Benteng Kuto Besak Tourism. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking - Benteng Kuto Besak Tour</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            background-color: #f4f7f6;
+        }
+        .booking-page-container {
+            display: flex;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto;
+            align-items: flex-start;
+        }
+        .booking-form-container {
+            flex: 2; /* Takes 2/3 of the space */
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 40px;
+        }
+        .booking-container h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .booking-container p {
+            text-align: center;
+            color: #555;
+            margin-bottom: 40px;
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #0077ff;
+            box-shadow: 0 0 0 3px rgba(0, 119, 255, 0.2);
+        }
+        #total-price-info span {
+            color: #d9534f;
+            font-weight: 700;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #0077ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #005fd1;
+        }
+
+        /* Booking Summary (Right Column) */
+        .booking-summary {
+            flex: 1; /* Takes 1/3 of the space */
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 100px;
+        }
+        .booking-summary h2 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-top: 0;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        .summary-item .label { color: #555; }
+        .summary-item .value { color: #2c3e50; font-weight: 600; }
+        .summary-total {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+            text-align: center;
+        }
+        .summary-total .label { font-size: 1.2rem; font-weight: 500; }
+        .summary-total .value { font-size: 2rem; font-weight: 700; color: #d9534f; display: block; margin-top: 5px;}
+
+
+        /* Payment Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+        .modal-overlay.show .modal-content {
+            transform: scale(1);
+        }
+        .modal-content h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        .modal-final-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0077ff;
+            margin-bottom: 25px;
+        }
+        .payment-methods {
+            margin-bottom: 25px;
+        }
+        .payment-methods label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .payment-methods select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .modal-close-btn {
+            padding: 10px 20px;
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        #pay-btn {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo" style="color: #2c3e50;">Benteng Kuto Besak</div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#history">History</a></li>
+                <li><a href="index.html#tour">Virtual Tour</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="booking-page-container">
+            <div class="booking-form-container">
+                <div class="booking-container">
+                    <h1>Book Your Historical Tour</h1>
+                    <p>Pilih paket wisata Anda dan jelajahi kekayaan sejarah Palembang bersama kami.</p>
+                </div>
+                <form id="booking-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tour-package">Choose Your Tour Package</label>
+                        <select id="tour-package" name="tour-package" required>
+                            <option value="bkb">Benteng Kuto Besak Only</option>
+                            <option value="bkb_museum">Benteng Kuto Besak + Museum SMB II</option>
+                            <option value="bkb_perahu">Benteng Kuto Besak + Wisata Perahu</option>
+                            <option value="lengkap">Paket Lengkap (BKB, Museum & Perahu)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tour-guide">Choose Your Tour Guide</label>
+                        <select id="tour-guide" name="tour-guide" required>
+                            <option value="Andi">Andi Saputra</option>
+                            <option value="Budi">Budi Hartono</option>
+                            <option value="Citra">Citra Lestari</option>
+                            <option value="Dewi">Dewi Anggraini</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tour-date">Date</label>
+                        <input type="date" id="tour-date" name="tour-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="participants">Number of Participants</label>
+                        <input type="number" id="participants" name="participants" min="1" value="1" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Book Now</button>
+                </form>
+            </div>
+
+            <div class="booking-summary">
+                <h2>Ringkasan Pemesanan</h2>
+                <div class="summary-item">
+                    <span class="label">Paket Tur:</span>
+                    <span class="value" id="summary-package">Benteng Kuto Besak Only</span>
+                </div>
+                <div class="summary-item">
+                    <span class="label">Harga per Orang:</span>
+                    <span class="value" id="summary-price-per-person">Rp 25.000</span>
+                </div>
+                <div class="summary-item">
+                    <span class="label">Jumlah Peserta:</span>
+                    <span class="value" id="summary-participants">1</span>
+                </div>
+                <div class="summary-total">
+                    <span class="label">Total Harga</span>
+                    <span class="value" id="summary-total-price">Rp 25.000</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>Konfirmasi Pembayaran</h2>
+            <p>Total yang harus dibayar:</p>
+            <div id="modal-final-price" class="modal-final-price">Rp 0</div>
+            <div class="payment-methods">
+                <label for="payment-method">Pilih Metode Pembayaran</label>
+                <select id="payment-method" name="payment-method">
+                    <option value="qris">QRIS</option>
+                    <option value="va">Virtual Account</option>
+                    <option value="credit-card">Kartu Kredit</option>
+                    <option value="ewallet">E-Wallet (OVO, GoPay, Dana)</option>
+                </select>
+            </div>
+            <button id="pay-btn">Bayar</button>
+            <button id="modal-close-btn" class="modal-close-btn">Batal</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tourPackageSelect = document.getElementById('tour-package');
+            const participantsInput = document.getElementById('participants');
+            const bookingForm = document.getElementById('booking-form');
+            const paymentModal = document.getElementById('payment-modal');
+            const modalFinalPrice = document.getElementById('modal-final-price');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            const payBtn = document.getElementById('pay-btn');
+
+            // Summary elements
+            const summaryPackage = document.getElementById('summary-package');
+            const summaryPricePerPerson = document.getElementById('summary-price-per-person');
+            const summaryParticipants = document.getElementById('summary-participants');
+            const summaryTotalPrice = document.getElementById('summary-total-price');
+
+            let currentTotalPrice = 0;
+
+            const basePrice = 25000;
+            const additionalPrice = 5000;
+
+            // Package Durations
+            const packageDurations = {
+                bkb: '1 Jam',
+                bkb_museum: '2 Jam',
+                bkb_perahu: '2 Jam',
+                lengkap: '3 Jam'
+            };
+
+            function formatCurrency(amount) {
+                return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(amount);
+            }
+
+            function updateTotalPrice() {
+                const selectedPackage = tourPackageSelect.value;
+                const participants = parseInt(participantsInput.value) || 0;
+                const selectedPackageText = tourPackageSelect.options[tourPackageSelect.selectedIndex].text;
+
+                let pricePerPerson;
+                switch (selectedPackage) {
+                    case 'bkb':
+                        pricePerPerson = basePrice; // 25.000
+                        break;
+                    case 'bkb_museum':
+                        pricePerPerson = basePrice + additionalPrice; // 30.000
+                        break;
+                    case 'bkb_perahu':
+                        pricePerPerson = basePrice + (additionalPrice * 2); // 35.000
+                        break;
+                    case 'lengkap':
+                        pricePerPerson = basePrice + (additionalPrice * 3); // 40.000
+                        break;
+                }
+
+                currentTotalPrice = pricePerPerson * participants;
+
+                // Update summary
+                summaryPackage.textContent = selectedPackageText;
+                summaryPricePerPerson.textContent = formatCurrency(pricePerPerson);
+                summaryParticipants.textContent = participants;
+                summaryTotalPrice.textContent = formatCurrency(currentTotalPrice);
+            }
+
+            // Add event listeners to all form elements that affect the price
+            tourPackageSelect.addEventListener('change', updateTotalPrice);
+            participantsInput.addEventListener('input', updateTotalPrice);
+
+            bookingForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Mencegah form dikirim
+                
+                // Validasi form sebelum buka modal
+                if (!bookingForm.checkValidity()) {
+                    bookingForm.reportValidity();
+                    return;
+                }
+
+                modalFinalPrice.textContent = formatCurrency(currentTotalPrice);
+                paymentModal.classList.add('show');
+            });
+
+            modalCloseBtn.addEventListener('click', function() {
+                paymentModal.classList.remove('show');
+            });
+
+            payBtn.addEventListener('click', function() {
+                paymentModal.classList.remove('show');
+
+                Swal.fire({
+                    title: 'Pembayaran Berhasil!',
+                    text: 'Tiket Anda telah diterbitkan.',
+                    icon: 'success',
+                    confirmButtonText: 'Lihat Tiket'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Prepare data for ticket page
+                        const name = document.getElementById('name').value;
+                        const email = document.getElementById('email').value;
+                        const date = document.getElementById('tour-date').value;
+                        const participants = document.getElementById('participants').value;
+                        const selectedPackageText = tourPackageSelect.options[tourPackageSelect.selectedIndex].text;
+                        const guide = document.getElementById('tour-guide').options[document.getElementById('tour-guide').selectedIndex].text;
+                        const price = formatCurrency(currentTotalPrice);
+
+                        // Redirect to ticket.html with URL parameters
+                        const params = new URLSearchParams({ name, email, date, participants, package: selectedPackageText, guide, price });
+                        window.location.href = `ticket.html?${params.toString()}`;
+                    }
+                });
+            });
+
+            // Set minimum date for date input to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('tour-date').setAttribute('min', today);
+
+            // Initial calculation
+            updateTotalPrice();
+        });
+    </script>
+</body>
+</html>

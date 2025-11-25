@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your E-Ticket - Benteng Kuto Besak Tour</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f7f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .ticket-container {
+            max-width: 650px;
+            width: 100%;
+            margin: 20px auto;
+            background: #fff;
+            border: 2px dashed #0077ff;
+            border-radius: 15px;
+            padding: 30px 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .ticket-header {
+            text-align: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .ticket-header h2 {
+            color: #0077ff;
+            margin: 0;
+            font-size: 2rem;
+        }
+        .ticket-header p {
+            margin: 5px 0 0;
+            color: #555;
+            font-size: 1.1rem;
+        }
+        .ticket-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 30px;
+        }
+        .ticket-item {
+            font-size: 1rem;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .ticket-item strong {
+            display: block;
+            color: #333;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .ticket-item span {
+            color: #2c3e50;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+        .ticket-item.full-width {
+            grid-column: span 2;
+            text-align: center;
+            background-color: #e9f5ff;
+        }
+        .ticket-item.full-width span {
+            font-weight: 700;
+            color: #d9534f;
+            font-size: 1.5rem;
+        }
+        .print-button {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .print-button button {
+            padding: 12px 30px;
+            background-color: #0077ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .print-button button:hover {
+            background-color: #005fd1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ticket-container">
+        <div class="ticket-header">
+            <h2>E-Ticket Wisata</h2>
+            <p>Benteng Kuto Besak & Sekitarnya</p>
+        </div>
+        <div class="ticket-body">
+            <div class="ticket-item"><strong>Nama Pengunjung:</strong><span id="ticket-name"></span></div>
+            <div class="ticket-item"><strong>Tanggal Tur:</strong><span id="ticket-date"></span></div>
+            <div class="ticket-item"><strong>Email:</strong><span id="ticket-email"></span></div>
+            <div class="ticket-item"><strong>Jumlah Peserta:</strong><span id="ticket-participants"></span></div>
+            <div class="ticket-item"><strong>Paket Tur:</strong><span id="ticket-package"></span></div>
+            <div class="ticket-item"><strong>Pemandu Tur:</strong><span id="ticket-guide"></span></div>
+            <div class="ticket-item full-width"><strong>Total Pembayaran:</strong><span id="ticket-price"></span></div>
+        </div>
+    </div>
+
+    <div class="print-button">
+        <button onclick="window.print()">Cetak Tiket</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            document.getElementById('ticket-name').textContent = params.get('name') || 'N/A';
+            document.getElementById('ticket-date').textContent = params.get('date') || 'N/A';
+            document.getElementById('ticket-email').textContent = params.get('email') || 'N/A';
+            document.getElementById('ticket-participants').textContent = params.get('participants') || 'N/A';
+            document.getElementById('ticket-package').textContent = params.get('package') || 'N/A';
+            document.getElementById('ticket-guide').textContent = params.get('guide') || 'N/A';
+            document.getElementById('ticket-price').textContent = params.get('price') || 'N/A';
+        });
+    </script>
+
+</body>
+</html>
